@@ -43,7 +43,6 @@ def play_game(ans, cards):
         exit()
     else:
         print("You did not enter 'Y or 'N', please try again")
-       # Don't know why 'continue' isn't working to return to top of while loop
         exit()
 
 play_game(ans, cards)
@@ -65,10 +64,14 @@ def continue_playing(ans2, play_game):
             dealer_random_card = random.choice(cards)
             random_playercard3 = random.choice(cards)
         '''
-        Ace can either be 1 or 11. If random # from cards list is 11 and current score is greater than 10, subtract 10 to equal 1
+        Ace can either be 2 or 11. If random # from cards list is 2 and 
+        current score is less than or equal to 10 this will add 10. 
+        The following code does the reverse
         '''
-        if random_playercard3 == 11 and current_score['Your score'] > 10:
-            random_playercard3 -= 10
+        if random_playercard3 == 2 and current_score['Your score'] <= 12:
+            random_playercard3 += 9
+        elif random_playercard3 == 11 and current_score['Your score']>= 12:
+            random_playercard3 -= 9
         player_cards['Your Cards'].append(random_playercard3)
         current_score["Your score"].append(random_playercard3)
         final_player_score['Your final score'] = sum(current_score['Your score'])
@@ -108,6 +111,14 @@ def continue_playing(ans2, play_game):
         exit()
             
 continue_playing(ans2, play_game)
+
+'''
+Improvements that can be made:
+- prompt the user to play again.
+- any way to make code shorter?
+- if user enter's wrong input (not y or n), 
+    prompt the user to try the previous execution again
+'''
             
         
        
