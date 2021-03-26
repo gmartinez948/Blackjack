@@ -65,14 +65,10 @@ def continue_playing(ans2, play_game):
             dealer_random_card = random.choice(cards)
             random_playercard3 = random.choice(cards)
         '''
-        Ace can either be 2 or 11. If random # from cards list is 2 and 
-        current score is less than or equal to 10 this will add 10. 
-        The following code does the reverse
+        Ace can either be 1 or 11. If random # from cards list is 11 and current score is greater than 10, subtract 10 to equal 1
         '''
-        if random_playercard3 == 2 and current_score['Your score'] <= 12:
-            random_playercard3 += 9
-        elif random_playercard3 == 11 and current_score['Your score']>= 12:
-            random_playercard3 -= 9
+        if random_playercard3 == 11 and current_score['Your score'] > 10:
+            random_playercard3 -= 10
         player_cards['Your Cards'].append(random_playercard3)
         current_score["Your score"].append(random_playercard3)
         final_player_score['Your final score'] = sum(current_score['Your score'])
