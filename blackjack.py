@@ -32,7 +32,6 @@ def play_game(ans, cards):
             player_card1 = random.choice(cards)
             player_card2 = random.choice(cards)
             player_cards['Your Cards'] = [player_card1, player_card2]
-                    # trying to add up the sum of the values of ['Your Cards']
             current_score["Your score"] = [player_card1 + player_card2]
             dealers_cards["Dealer's hand"] = [random.choice(cards)]
         print(f"{player_cards}, {current_score}, \n{dealers_cards}")
@@ -68,10 +67,8 @@ def continue_playing(ans2, play_game):
         current score is less than or equal to 10 this will add 10. 
         The following code does the reverse
         '''
-        if random_playercard3 == 2 and current_score['Your score'] <= 12:
-            random_playercard3 += 9
-        elif random_playercard3 == 11 and current_score['Your score']>= 12:
-            random_playercard3 -= 9
+        if random_playercard3 == 11 and current_score['Your score'] > 10:
+            random_playercard3 -= 10
         player_cards['Your Cards'].append(random_playercard3)
         current_score["Your score"].append(random_playercard3)
         final_player_score['Your final score'] = sum(current_score['Your score'])
