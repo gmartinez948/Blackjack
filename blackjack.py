@@ -35,7 +35,7 @@ def play_game(ans, cards):
             current_score["Your score"] = [player_card1 + player_card2]
             dealers_cards["Dealer's hand"] = [random.choice(cards)]
         print(f"{player_cards}, {current_score}, \n{dealers_cards}")
-        if current_score["Your score"] == 21:
+        if current_score["Your score"] == 21 and dealers_cards["Dealer's hand"] < 21:
             print('You win!')
     elif ans == 'n':
         print("Goodbye")
@@ -63,12 +63,14 @@ def continue_playing(ans2, play_game):
             dealer_random_card = random.choice(cards)
             random_playercard3 = random.choice(cards)
         '''
-        Ace can either be 2 or 11. If random # from cards list is 2 and 
+        Ace can either be 1 or 11. If random # from cards list is 2 and 
         current score is less than or equal to 10 this will add 10. 
         The following code does the reverse
         '''
         if random_playercard3 == 11 and current_score['Your score'] > 10:
             random_playercard3 -= 10
+        elif dealer_random_card == 11 and dealer_final_score["Dealer's hand"] > 10:
+            dealer_random_card -= 10
         player_cards['Your Cards'].append(random_playercard3)
         current_score["Your score"].append(random_playercard3)
         final_player_score['Your final score'] = sum(current_score['Your score'])
@@ -104,6 +106,7 @@ def continue_playing(ans2, play_game):
         elif final_player_score['Your final score'] > dealer_final_score["Dealer's hand"] and final_player_score['Your final score'] < 21:
             print('You win!')
     else:
+        # Implement code that allows someone to go back to the choice of y or n
         print("You did not enter 'y' or 'n', please start over")
         exit()
             
@@ -115,6 +118,7 @@ Improvements that can be made:
 - any way to make code shorter?
 - if user enter's wrong input (not y or n), 
     prompt the user to try the previous execution again
+
 '''
             
         
